@@ -1,19 +1,19 @@
 ## Expense App Demo
 
-Expense App Demo is basically a single page application to track save all expenses and 
+Expense App Demo is basically a single page application to track and save all expenses and 
 create a list of total expense group by week.
 
 Workflow-
 
- You can create entry for all individual expenses.
- You can inline edit the amount and description of expenses in the table.
- You can delete any expenses.
- you can view list of all expenses and group by expense list by week.
- By default expense date goes to current date.
+ a) You can create entry for all individual expenses.
+ b) You can inline edit the amount and description of expenses in the table.
+ c) You can delete any expenses.
+ d) you can view list of all expenses and group by expense list by week.
+ e) By default expense date goes to current date.
  
 ## Code Example
 
-In this I demo angualarJS,HTML & Bootstrap CSS is used .
+In this demo I have used angualarJS,NodeJS, HTML & Bootstrap CSS  .
 
 ## Installation
 
