@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- JS References -->
     <script src="js/thirdparty/custom.modernizr.js"></script>
+	 
 </head>
 <body>
     <!-- Header and Navigation Menu -->
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavController">
+    <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavController">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
@@ -35,6 +36,16 @@
             </div>
         </div>
     </nav>
+	
+	
+	<div class="tab" id="SideMenu">
+  <button class="tablinks active" onclick="openCity(event, 'div_create')" id="default_div">Create Expense</button>
+  <button class="tablinks" onclick="openCity(event, 'div_list')">Expense List</button>
+  <button class="tablinks" onclick="openCity(event, 'div_weekly')">Weekly Expense</button>
+</div>
+
+	
+	
     <!--End Header and Navigation -->
     <div ng-view></div>
     <script src="js/thirdparty/jquery.js"></script>
@@ -43,5 +54,28 @@
     <script src="js/app.js"></script>
     <script src="js/app.extension.js"></script>
     <script src="js/thirdparty/ui-bootstrap-tpls-0.6.0.min.js"></script>
+	
+	
+	<script>
+	$('#SideMenu').css("height", $(document).height());
+	
+	
+	function openCity(evt, moduleName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		document.getElementById(moduleName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+
+		// Get the element with id="default_div" and click on it
+		document.getElementById("default_div").click();
+</script>
 </body>
 </html>

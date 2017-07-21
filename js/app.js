@@ -78,6 +78,10 @@ var groupByWeek = {};
         localStorage.setItem("ExpenseData", JSON.stringify($scope.expenses));
         $scope.newExpense = null;
         AppFactory.load();
+		
+		alert("Expense added successfully");
+		//---Show alert message
+	  //SweetAlert.swal("Expense added successfully !", " Go to List page to view all list ", "success");
     };
 
 
