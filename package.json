@@ -1,0 +1,16 @@
+{
+  "name": "expensestrackerdemo",
+  "version": "1.0.0",
+  "description": "Expense Tracker Demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "console.log(\"app started\")",
+    "start": "node server.js"
+  },
+  "author": "Himanshu Khatri",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "nodemon": "^1.11.0"
+  }
+}

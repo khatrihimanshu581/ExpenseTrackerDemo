@@ -1,0 +1,104 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            <h2 class="appheader">Add an Expense</h2>
+            <form name="form" class="form-horizontal" novalidate>
+                <div class="row">
+                    <div class="col-sm-3 col-md-2 col-lg-2">
+                        <span class="customLabel">Amount ($)</span>
+                    </div>
+                    <div class="col-sm-9 col-md-10 col-lg-10 mycolumn">
+                        <input type="text" class="form-control" placeholder="Enter Expense Amount" ng-model="newExpense.amount" name="amount" smart-float />
+                        <span ng-show="form.amount.$error.float" class="text-danger" >Please enter a number value.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-md-2 col-lg-2">
+                        <span class="customLabel">Description</span>
+                    </div>
+                    <div class="col-sm-9 col-md-10 col-lg-10 mycolumn">
+                        <textarea class="form-control" placeholder="Description" ng-model="newExpense.description" required />
+                        <span ng-show="form.amount.$error.required" class="text-danger" >Please enter description.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-md-2 col-lg-2"></div>
+                    <div class="col-sm-2 col-md-2 centered">
+                        <input type="submit" class="btn  BtnBlue" value="Add Expense" ng-click="addExpense()" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+
+            <table class="table table-hover table-bordered ">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th style="text-align:center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="expense in expenses | orderBy:'-date'">
+                        <td ng-click="editExpense(expense)">{{ expense.date | date }}</td>
+                        <td ng-hide="expense.editing" ng-click="editExpense(expense)">{{ expense.amount }}</td>
+                        <td ng-show="expense.editing">
+                            <input type="text" ng-model="expense.amount">
+                        </td>
+                        <td ng-hide="expense.editing" ng-click="editExpense(expense)">{{ expense.description }}</td>
+                        <td ng-show="expense.editing">
+                            <input type="text" ng-model="expense.description">
+                        </td>
+                        <td style="text-align:center;" ng-hide="expense.editing">
+                            <a ng-click="removeExpense(expense)" class="BtnRedIcon" title="Delete"></a>
+                        </td>
+                        <td style="text-align:center;" ng-show="expense.editing">
+                            <a ng-click="saveExpense(expense)" class="BtnBlueIcon" title="Save"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">Total:</td>
+                        <td>
+                            <strong>{{ totalExpenseAmount() | currency }}</strong>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            Expenses By Week
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Week (yyyy-number of week)</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="expense in expensesByWeek|  orderBy:'-week'">
+                        <td>{{ expense.week }}</td>
+                        <td>{{ expense.amount|currency }}</td>
+                    </tr>
+                    <tr>
+                        <td align="right">Total:</td>
+                        <td>
+                            <strong>{{ totalExpenseAmount() | currency }}</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
